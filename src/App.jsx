@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState, useMemo, useCallback } from "react";
+import "./App.css";
+import axios from "axios";
+
 
 function App() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const URL = "http://sandbox.local/wp-json/wp/v2/posts";
+    const URL = "https://yabanin.com/headless_test/wp-json/wp/v2/posts";
     axios.get(URL).then((res) => {
       setPosts(res.data);
       setIsLoading(false);
@@ -28,4 +28,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
