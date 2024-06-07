@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const PostList = () => {
+const EnPostList = () => {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const URL = "https://yabanin.com/headless_test/wp-json/wp/v2/posts";
+    const URL = "https://yabanin.com/headless_test/en/wp-json/wp/v2/posts";
     axios.get(URL).then((res) => {
       setPosts(res.data);
       setIsLoading(false);
@@ -17,7 +17,6 @@ const PostList = () => {
 
   return (
     <div>
-      <Link to={'/en'}>English</Link>
       {posts.length === 0 ? (
         <p>No posts found</p>
       ) : 
@@ -32,4 +31,4 @@ const PostList = () => {
   );
 }
 
-export default PostList;
+export default EnPostList;
