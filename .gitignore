@@ -1,6 +1,11 @@
 Thumbs.db
 .DS_Store
 *.log
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 
 /wp-config.php
 /.htaccess
