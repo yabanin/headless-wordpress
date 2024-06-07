@@ -1,13 +1,17 @@
 import './App.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import PostList from './PostList';
+import Post from './Post';
 
 function App() {
   return (
-    <div>
-      <Home />
-      <PostList />
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<PostList />} />
+        <Route path="/post/:id" element={<Post />} />
+      </Routes>
+    </Router>
   );
 }
 

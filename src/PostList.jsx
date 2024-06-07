@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const PostList = () => {
@@ -16,10 +17,14 @@ const PostList = () => {
 
   return (
     <div>
-      {posts.map((item) => (
+      {posts.length === 0 ? (
+        <p>No posts found</p>
+      ) : 
+      posts.map((item) => (
         <div>
           <h2>{item.title.rendered}</h2>
           <div dangerouslySetInnerHTML={{ __html: item.content.rendered }} /> 
+          <Link to={`/post/${item.id}`}>Read more</Link>
         </div>
       ))}
     </div>
