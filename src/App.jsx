@@ -1,31 +1,19 @@
-import { useEffect, useState, useMemo, useCallback } from "react";
-import "./App.css";
-import axios from "axios";
-
+import './App.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import PostList from './PostList';
+import Post from './Post';
+import EnPostList from './EnPostList';
 
 function App() {
-  const [posts, setPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const URL = "https://yabanin.com/headless_test/wp-json/wp/v2/posts";
-    axios.get(URL).then((res) => {
-      setPosts(res.data);
-      setIsLoading(false);
-    });
-  }, []);
-  
-
   return (
-    <div>
-      {posts.map((item) => (
-        <div>
-          <h2>{item.title.rendered}</h2>
-          <div dangerouslySetInnerHTML={{ __html: item.content.rendered }} /> 
-        </div>
-      ))}
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<PostList />} />
+        <Route path="/en" element={<EnPostList />} />
+        <Route path="/post/:id" element={<Post />} />
+      </Routes>
+    </Router>
   );
 }
 
-export default App;
+export default App
