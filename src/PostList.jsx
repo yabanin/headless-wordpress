@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import parse from 'html-react-parser';
 
 const PostList = () => {
   const [posts, setPosts] = useState([]);
@@ -23,9 +24,10 @@ const PostList = () => {
       ) : 
       posts.map((item) => (
         <div>
-          <h2>{item.title.rendered}</h2>
-          <div dangerouslySetInnerHTML={{ __html: item.content.rendered }} /> 
-          <Link to={`/post/${item.id}`}>Read more</Link>
+          <Link to={`/post/${item.id}`}>
+            <h2>{item.title.rendered}</h2>
+            {parse(item.content.rendered)}
+          </Link>
         </div>
       ))}
     </div>
