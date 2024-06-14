@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import './Post.scss'
 
 const Post = () => {
   const { lang, id } = useParams();
@@ -28,10 +29,9 @@ const Post = () => {
   }
 
   return (
-    <div>
-        <p>記事</p>
-        <h1>{post.title.rendered}</h1>
-        <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+    <div class='is-layout-constrained'>
+      <h1>{post.title.rendered}</h1>
+      <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
     </div>
   );
 };
